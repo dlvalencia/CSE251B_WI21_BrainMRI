@@ -1,0 +1,13 @@
+{
+    "experiment_name": "ResNet50_LR0.25e-3",
+    "dataset": {
+      "batch_size": 32
+    },
+    "experiment": {
+      "num_epochs": 100,
+      "learning_rate": 0.25e-3
+    },
+    "model": {
+      "model_type": "resnet50"
+    }
+  }
