@@ -119,6 +119,7 @@ class Experiment(object):
             self.__optimizer.zero_grad()
             if torch.cuda.is_available():
                 images = images.cuda().float()
+                label = label.cuda().long()
             else:
                 images = images.float()
                 label = label.long()

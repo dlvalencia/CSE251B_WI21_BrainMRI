@@ -2,6 +2,7 @@
  
 ### Changelog
 March 7th - Initial code dump of all files.
+March 7th - Fixed code to put labels onto CUDA, uploaded VGG16 training results
 
 
 
