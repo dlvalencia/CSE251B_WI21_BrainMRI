@@ -2,8 +2,11 @@
  
 ### Changelog
 March 7th - Initial code dump of all files.
+
 March 7th - Fixed code to put labels onto CUDA, uploaded VGG16 training results
+
 March 7th - Fixed code in model_factory.py to fix sizing issues with DenseNet121 forward pass
+
 March 8th - Added experiment_v03.py, updated main_run_exp.py to use updated experiment_v03.py.
 
 
