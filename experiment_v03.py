@@ -18,7 +18,7 @@ import os
 ROOT_STATS_DIR = './experiment_data'
 
 class Experiment(object):
-    def __init__(self, config_data):
+    def __init__(self, name):
         config_data = read_file_in_dir('./', name + '.json')
         if config_data is None:
             raise Exception("Configuration file doesn't exist: ", name)
