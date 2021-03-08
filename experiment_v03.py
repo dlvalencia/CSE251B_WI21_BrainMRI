@@ -56,13 +56,13 @@ class Experiment(object):
     
     def get_datasets(self, batch_size):
         train_dataset = KaggleBrainMRIDataset(csv_file='train_images.csv')
-        train_loader = DataLoader(dataset=train_dataset, batch_size=self.batch_size,
+        train_loader = DataLoader(dataset=train_dataset, batch_size=self.__batch_size,
                                   num_workers=0,shuffle=True)
         val_dataset = KaggleBrainMRIDataset(csv_file='val_images.csv')
-        val_loader = DataLoader(dataset=val_dataset, batch_size=self.batch_size,
+        val_loader = DataLoader(dataset=val_dataset, batch_size=self.__batch_size,
                                   num_workers=0,shuffle=True)
         test_dataset = KaggleBrainMRIDataset(csv_file='test_images.csv')
-        test_loader = DataLoader(dataset=test_dataset, batch_size=self.batch_size,
+        test_loader = DataLoader(dataset=test_dataset, batch_size=self.__batch_size,
                                   num_workers=0,shuffle=True)
         return train_loader,val_loader,test_loader
         
