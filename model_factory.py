@@ -98,7 +98,7 @@ class DenseNet121Model(nn.Module):
             param.requires_grad = False
         del tempModel
         self.relu = nn.ReLU(inplace=True)
-        self.fcLayer = nn.Linear(1024*4*4, 2)
+        self.fcLayer = nn.Linear(1024*7*7, 2)
 
     def forward(self, image_in):
         #pdb.set_trace()
