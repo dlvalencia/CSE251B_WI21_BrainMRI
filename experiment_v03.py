@@ -227,8 +227,8 @@ class Experiment(object):
     
     def get_TFPN(self,pred,label):
         #pdb.set_trace()
-        pred=np.argmax(pred.numpy(),axis=1)
-        label=label.numpy()
+        pred=np.argmax(pred.cpu().numpy(),axis=1)
+        label=label.cpu().numpy()
         TP = (pred*label).sum()
         FP = pred.sum()-TP
         TN = ((pred+label)==0).sum()

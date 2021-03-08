@@ -1,2 +1,4 @@
 
 experiment_data/Exp_VGG16/latest_model.pt
+experiment_data/ResNet50_LR0.25e-3/latest_model.pt
+
