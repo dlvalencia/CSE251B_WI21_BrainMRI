@@ -45,6 +45,8 @@ def get_model(pretrained_model_type):
         return ResNet50Model()
     elif(pretrained_model_type == 'densenet121'):
         return DenseNet121Model()
+    elif(pretrained_model_type == 'fullyconneted'):
+        return Fullyconneted()
         
 class VGG16Model(nn.Module):
     def __init__(self):
@@ -339,3 +341,38 @@ class BadNet(nn.Module):
         output = output.view(img.size(0), -1)
         output = self.fc(output)
         return output
+
+    
+class Fullyconneted(nn.Module):
+
+    def __init__(self):
+        super(Fullyconneted, self).__init__()
+        # 1 input image channel, 6 output channels, 3x3 square convolution
+        self.fc1 = nn.Linear(3*224*224 , 3000)  # 6*6 from image dimension
+
+        self.dp1  = nn.Dropout(0.25)
+        self.fc2 = nn.Linear(3000, 500)
+        self.act1 = nn.ReLU()
+        # self.bn2 = nn.BatchNorm1d(250)
+        self.dp2  = nn.Dropout(0.25)
+        # self.relu = nn.ReLU(inplace=True)
+        self.act2 = nn.ReLU()
+        # self.act = nn.Softmax()
+        self.fc3 = nn.Linear(500, 20)
+        self.act3 = nn.ReLU()
+        # self.fc3 = nn.Linear(250, 50)
+        self.fc4 = nn.Linear(20, 2)
+        self.act4 = nn.ReLU()
+    def forward(self, x):
+        # import pdb; pdb.set_trace()
+        # x = self.bn1(x)
+        x =  x.view(x.size(0),-1)
+        x = self.dp1(self.act1(self.fc1(x)))
+        x = self.act2(self.fc2(x))
+        x = self.dp2(x)
+        x = self.act3(x)
+        x = self.fc3(x)
+        x = self.act4(x)
+        x = self.fc4(x)
+        return x
+ 
