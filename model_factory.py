@@ -45,7 +45,7 @@ def get_model(pretrained_model_type):
         return ResNet50Model()
     elif(pretrained_model_type == 'densenet121'):
         return DenseNet121Model()
-    elif(pretrained_model_type == 'fullyconneted'):
+    elif(pretrained_model_type == 'FCModel'):
         return Fullyconneted()
         
 class VGG16Model(nn.Module):
