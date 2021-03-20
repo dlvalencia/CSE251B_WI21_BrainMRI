@@ -47,11 +47,17 @@ def get_model(pretrained_model_type):
         return DenseNet121Model()
     elif(pretrained_model_type == 'FCModel'):
         return Fullyconneted()
-        
+    elif(pretrained_model_type == 'LinearModel'):
+        return Linear()
+    elif(pretrained_model_type == 'ModdedLeNet5Net'):
+        return ModdedLeNet5Net()
+    elif(pretrained_model_type == 'badnet'):
+        return BadNet()
+
 class VGG16Model(nn.Module):
     def __init__(self):
         super().__init__()
-        
+
         tempModel = models.vgg16_bn(pretrained=True)
         self.vggFeatureEncoder = nn.Sequential(*(list(tempModel.children())[:-1]))
         self.vggClassifier = nn.Sequential(*(list(tempModel.children())[2][:-1]))
@@ -74,7 +80,7 @@ class VGG16Model(nn.Module):
 class ResNet50Model(nn.Module):
     def __init__(self):
         super().__init__()
-        
+
         tempModel = models.resnet50(pretrained=True)
         self.featureEncoder = nn.Sequential(*(list(tempModel.children())[:-1]))
         for param in self.featureEncoder.parameters():
@@ -93,7 +99,7 @@ class ResNet50Model(nn.Module):
 class DenseNet121Model(nn.Module):
     def __init__(self):
         super().__init__()
-        
+
         tempModel = models.densenet121(pretrained=True)
         self.featureEncoder = nn.Sequential(*(list(tempModel.children())[:-1]))
         for param in self.featureEncoder.parameters():
@@ -278,7 +284,7 @@ class ModdedLeNet5Net(nn.Module):
     F7 - 10 (Output)
     """
 
-    def __init__(self, channels=1):
+    def __init__(self, channels=3):
         super(ModdedLeNet5Net, self).__init__()
         self.convnet = nn.Sequential(
             nn.Conv2d(channels, 6, kernel_size=(1, 1)),
@@ -322,7 +328,7 @@ class BadNet(nn.Module):
     def __init__(self):
         super(BadNet, self).__init__()
         self.convnet = nn.Sequential(
-            nn.Conv2d(1, 16, kernel_size=(5, 5)),
+            nn.Conv2d(3, 16, kernel_size=(5, 5)),
             nn.ReLU(),
             nn.AvgPool2d(kernel_size=(2, 2), stride=2),
             nn.Conv2d(16, 32, kernel_size=(5, 5)),
@@ -342,7 +348,7 @@ class BadNet(nn.Module):
         output = self.fc(output)
         return output
 
-    
+
 class Fullyconneted(nn.Module):
 
     def __init__(self):
@@ -375,4 +381,19 @@ class Fullyconneted(nn.Module):
         x = self.act4(x)
         x = self.fc4(x)
         return x
- 
+
+
+class Linear(nn.Module):
+
+    def __init__(self):
+        super(Linear, self).__init__()
+        # 1 input image channel, 6 output channels, 3x3 square convolution
+        self.fc1 = nn.Linear(3*224*224 , 2)  # 6*6 from image dimension
+
+    def forward(self, x):
+        # import pdb; pdb.set_trace()
+        # x = self.bn1(x)
+        x =  x.view(x.size(0),-1)
+        x = self.fc1(x)
+
+        return x
