@@ -15,17 +15,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 NUM_CLASSES = 2
-################################################################################
-# CSE 253: Programming Assignment 4
-# Code snippet by Ajit Kumar, Savyasachi
-# Fall 2020
-################################################################################
-import pdb
-from torchvision import models
-import torch.nn as nn
-import torch
-import ssl
-
 # Build and return the model here based on the configuration.
 def get_model(pretrained_model_type):
 

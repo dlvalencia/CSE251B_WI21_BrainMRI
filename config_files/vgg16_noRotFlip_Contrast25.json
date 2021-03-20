@@ -1,0 +1,20 @@
+{
+    "experiment_name": "VGG16_LR0.25e-3_NoRotFlip_Contrast25",
+    "dataset": {
+      "batch_size": 32
+    },
+    "experiment": {
+      "num_epochs": 100,
+      "learning_rate": 0.25e-3
+    },
+    "model": {
+      "model_type": "vgg16"
+    },
+    "transforms":{
+        "RotateAngle": 0,
+        "HorzFlip": "false",
+        "ContrastFactor": 2.5,
+        "SharpnessFactor": 1.0,
+        "BrightnessFactor": 1.0
+    }
+  }

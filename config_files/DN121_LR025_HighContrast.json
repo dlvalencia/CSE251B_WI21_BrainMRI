@@ -1,0 +1,20 @@
+{
+    "experiment_name": "Densenet121_LR0.25e-3_Contrast1.5_Sharpness0.7",
+    "dataset": {
+      "batch_size": 32
+    },
+    "experiment": {
+      "num_epochs": 100,
+      "learning_rate": 0.25e-3
+    },
+    "model": {
+      "model_type": "densenet121"
+    },
+    "transforms":{
+        "RotateAngle": 20.0,
+        "HorzFlip": "true",
+        "ContrastFactor": 1.5,
+        "SharpnessFactor": 0.7,
+        "BrightnessFactor": 1.0
+    }
+  }

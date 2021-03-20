@@ -11,6 +11,8 @@ March 8th - Added experiment_v03.py, updated main_run_exp.py to use updated expe
 
 March 11th - Added experiment_v04.py, updated main_run_exp.py, and added dataloader2.py. Now requires definition of image transforms in the json configuration file.
 
+March 20th - Final update. Updated experiment_v04.py to support definition of linear model. Included several example JSON config files in config_files directory. Added matlab file to plot some results in the experiment_data directory.
+
 ### How to train a model
 The syntax for training a model is python main_run_exp.py <config_file>, where <config_file> is a config .json file. See the example Resnet50_LR0225.json file for an example.
 
@@ -28,6 +30,8 @@ The following entries should be changed:
     1. 'resnet50' - model is a pretrained ResNet50 CNN
     2. 'vgg16' - model is a pretrained VGG16 CNN with batch norm
     3. 'densenet121' - model is a pretrained DenseNet121 CNN
+    4. 'LinearModel' - model is a linear model
+    5. 'FCModel' - 5 linear layer neural network with dropout and ReLU activations
 
 * transforms : defines the transforms and their parameters
     1. 'RotateAngle' - the absolute range edges that the rotation transformation will apply. Expects float value.
